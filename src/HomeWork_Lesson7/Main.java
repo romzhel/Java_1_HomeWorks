@@ -7,7 +7,7 @@ public class Main {
     private static Random random = new Random();
 
     public static void main(String[] args) {
-        Cat[] cats = initCats(10, 50);
+        Cat[] cats = initCats(10, 50, false);
         Plate[] plates = initAndFillPlates(10, 50, 200);
 
         System.out.println(String.format(SEPARATOR, "Кормим котов"));
@@ -16,14 +16,14 @@ public class Main {
         }
     }
 
-    public static Cat[] initCats(int count, int maxCatAppetite) {
+    public static Cat[] initCats(int count, int maxCatAppetite, boolean canEatFromSeveralPlates) {
         System.out.println(String.format(SEPARATOR, "Заводим голодных котиков"));
         String[] names = {"Авалон", "Адажио", "Аполлон", "Арахис", "Бандит", "Борис", "Винсент", "Гомер", "Зорро", "Леон"};
         Cat[] cats = new Cat[count];
 
         for (int i = 0; i < count; i++) {
             String catName = i < names.length ? names[i] : names[i % names.length] + " (" + i / names.length + ")";
-            cats[i] = new Cat(catName, random.nextInt(maxCatAppetite) + 1);
+            cats[i] = new Cat(catName, random.nextInt(maxCatAppetite) + 1, canEatFromSeveralPlates);
             cats[i].displayInfo();
         }
 

@@ -41,4 +41,8 @@ public class Plate {
     public String getName() {
         return name;
     }
+
+    public int getFood() {
+        return food;
+    }
 }

@@ -4,15 +4,22 @@ public class Cat {
     private String name;
     private int appetite;
     private int satiety;
+    private boolean canEatFromSeveralPlates;
 
-    public Cat(String name, int appetite) {
+    public Cat(String name, int appetite, boolean canEatFromSeveralPlates) {
         this.name = name;
         this.appetite = appetite;
+        this.canEatFromSeveralPlates = canEatFromSeveralPlates;
     }
 
     public void eat(Plate plate) {
-        System.out.print(String.format("Кот %s ест из тарелки %s.... ", name, plate.getName()));
-        satiety += plate.provideFood(appetite - satiety);
+        System.out.print(String.format("Кот %s подходит поесть из тарелки %s.... ", name, plate.getName()));
+        int neededFood = appetite - satiety;
+        if (canEatFromSeveralPlates || plate.getFood() > neededFood) {
+            satiety += plate.provideFood(neededFood);
+        } else {
+            System.out.print(String.format("Не стал есть, мало еды, хотел %d, а было %d.... ", neededFood, plate.getFood()));
+        }
     }
 
     public void eat(Plate[] plates) {
