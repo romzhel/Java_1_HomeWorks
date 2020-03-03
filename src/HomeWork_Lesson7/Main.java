@@ -7,7 +7,7 @@ public class Main {
     private static Random random = new Random();
 
     public static void main(String[] args) {
-        Cat[] cats = initCats(10, 50, false);
+        Cat[] cats = initCats(10, 50, true);
         Plate[] plates = initAndFillPlates(10, 50, 200);
 
         System.out.println(String.format(SEPARATOR, "Кормим котов"));
